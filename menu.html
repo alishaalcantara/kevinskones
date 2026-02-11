@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Kevin's Kones</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F2E9E4;
+            color: #000;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #fff;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #997864;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #997864;
+        }
+
+        .nav-links a.active {
+            color: #997864;
+            border-bottom: 2px solid #997864;
+            padding-bottom: 0.25rem;
+        }
+
+        /* Page Header */
+        .page-header {
+            background-color: #997D84;
+            color: #fff;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-header .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        .page-header .shape-1 {
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            top: -20px;
+            right: 12%;
+        }
+
+        .page-header .shape-2 {
+            width: 60px;
+            height: 60px;
+            border: 3px solid #fff;
+            background: transparent;
+            bottom: 10px;
+            left: 18%;
+        }
+
+        .page-header .shape-3 {
+            width: 140px;
+            height: 140px;
+            border: 3px solid #fff;
+            background: transparent;
+            top: -50px;
+            left: 5%;
+        }
+
+        .page-header .shape-4 {
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            bottom: -10px;
+            right: 20%;
+        }
+
+        /* Menu Container */
+        .menu-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .menu-section h2 {
+            font-size: 2.2rem;
+            color: #997864;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #F2E9E4;
+        }
+
+        .menu-subsection {
+            margin-bottom: 2.5rem;
+        }
+
+        .menu-subsection:last-child {
+            margin-bottom: 0;
+        }
+
+        .menu-subsection h3 {
+            font-size: 1.5rem;
+            color: #997D84;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        /* Menu Items Grid */
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem 2rem;
+        }
+
+        .menu-item {
+            padding: 0.75rem 0;
+            font-size: 1.05rem;
+            color: #333;
+            border-bottom: 1px dotted #ddd;
+        }
+
+        /* Toppings List */
+        .toppings-note {
+            background-color: #F2E9E4;
+            padding: 1.25rem 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .toppings-note p {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .toppings-note strong {
+            color: #997864;
+        }
+
+        .toppings-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.5rem;
+            list-style: none;
+        }
+
+        .toppings-list li {
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        .toppings-list li::before {
+            content: '+';
+            margin-right: 0.4rem;
+            color: #997864;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive - Mobile */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+
+            .page-header {
+                padding: 3rem 1.5rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .menu-container {
+                padding: 2rem 1rem;
+            }
+
+            .menu-section {
+                padding: 2rem 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .menu-section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+
+            .menu-items {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem 1rem;
+            }
+
+            .menu-item {
+                font-size: 0.95rem;
+                padding: 0.6rem 0;
+            }
+
+            .menu-subsection h3 {
+                font-size: 1.3rem;
+                margin-bottom: 1rem;
+            }
+
+            .menu-subsection p {
+                font-size: 0.9rem;
+            }
+
+            .toppings-note {
+                padding: 1rem;
+            }
+
+            .toppings-note p,
+            .toppings-list li {
+                font-size: 0.9rem;
+            }
+
+            footer {
+                padding: 1.5rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Responsive - Small Mobile */
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 0.75rem 1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .menu-container {
+                padding: 1.5rem 0.75rem;
+            }
+
+            .menu-section {
+                padding: 1.5rem 1rem;
+                border-radius: 8px;
+            }
+
+            .menu-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-subsection h3 {
+                font-size: 1.2rem;
+            }
+
+            .toppings-list {
+                gap: 0.4rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">Kevin's Kones</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="our-story.html">Our Story</a></li>
+            <li><a href="menu.html" class="active">Menu</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <h1>Menu</h1>
+    </section>
+
+    <!-- Menu Content -->
+    <div class="menu-container">
+
+        <!-- Ice Cream Section -->
+        <section class="menu-section">
+            <h2>Ice Cream</h2>
+
+            <div class="menu-subsection">
+                <h3>Flavors</h3>
+                <div class="menu-items">
+                    <div class="menu-item">Vanilla</div>
+                    <div class="menu-item">Chocolate</div>
+                    <div class="menu-item">Cookies & Cream</div>
+                    <div class="menu-item">Birthday Cake</div>
+                    <div class="menu-item">Strawberry</div>
+                    <div class="menu-item">Superhero</div>
+                    <div class="menu-item">Dulce de Leche</div>
+                    <div class="menu-item">Butter Pecan</div>
+                    <div class="menu-item">Mint Chocolate Chip</div>
+                </div>
+            </div>
+
+            <div class="menu-subsection">
+                <h3>Sundaes</h3>
+                <p style="color: #555; margin-bottom: 1rem;">Pick any flavor and add your favorite toppings!</p>
+                <div class="toppings-note">
+                    <p><strong>Available Toppings:</strong></p>
+                    <ul class="toppings-list">
+                        <li>Caramel</li>
+                        <li>Hot Fudge</li>
+                        <li>Sprinkles</li>
+                        <li>Fresh Fruit</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Drinks Section -->
+        <section class="menu-section">
+            <h2>Drinks</h2>
+
+            <div class="menu-subsection">
+                <h3>Milkshakes</h3>
+                <div class="menu-items">
+                    <div class="menu-item">Vanilla</div>
+                    <div class="menu-item">Chocolate</div>
+                    <div class="menu-item">Cookies & Cream</div>
+                    <div class="menu-item">Birthday Cake</div>
+                    <div class="menu-item">Strawberry</div>
+                    <div class="menu-item">Superhero</div>
+                    <div class="menu-item">Dulce de Leche</div>
+                    <div class="menu-item">Butter Pecan</div>
+                    <div class="menu-item">Mint Chocolate Chip</div>
+                </div>
+            </div>
+
+            <div class="menu-subsection">
+                <h3>Slushies</h3>
+                <div class="menu-items">
+                    <div class="menu-item">Cherry</div>
+                    <div class="menu-item">Blue Raspberry</div>
+                    <div class="menu-item">Coca-Cola</div>
+                    <div class="menu-item">Watermelon</div>
+                    <div class="menu-item">Strawberry</div>
+                </div>
+            </div>
+
+            <div class="menu-subsection">
+                <h3>Floats</h3>
+                <div class="menu-items">
+                    <div class="menu-item">Root Beer Float</div>
+                    <div class="menu-item">Coca-Cola Float</div>
+                    <div class="menu-item">Dr. Pepper Float</div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Kevin's Kones. All rights reserved.</p>
+    </footer>
+</body>
+</html>

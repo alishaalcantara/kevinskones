@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Kevin's Kones</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F2E9E4;
+            color: #000;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #fff;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #997864;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #997864;
+        }
+
+        .nav-links a.active {
+            color: #997864;
+            border-bottom: 2px solid #997864;
+            padding-bottom: 0.25rem;
+        }
+
+        /* Page Header */
+        .page-header {
+            background-color: #997D84;
+            color: #fff;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-header .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        .page-header .shape-1 {
+            width: 90px;
+            height: 90px;
+            background-color: #fff;
+            top: -20px;
+            left: 8%;
+        }
+
+        .page-header .shape-2 {
+            width: 70px;
+            height: 70px;
+            border: 3px solid #fff;
+            background: transparent;
+            bottom: -20px;
+            right: 12%;
+        }
+
+        .page-header .shape-3 {
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            top: 30px;
+            right: 25%;
+        }
+
+        .page-header .shape-4 {
+            width: 120px;
+            height: 120px;
+            border: 3px solid #fff;
+            background: transparent;
+            bottom: -40px;
+            left: 15%;
+        }
+
+        /* Contact Info Section */
+        .contact-info {
+            background-color: #fff;
+            padding: 5rem 2rem;
+        }
+
+        .contact-info-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .contact-card {
+            padding: 2rem;
+        }
+
+        .contact-card svg {
+            width: 50px;
+            height: 50px;
+            color: #997864;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-card h3 {
+            font-size: 1.4rem;
+            color: #997864;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card p {
+            font-size: 1.05rem;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        /* Upcoming Locations Section */
+        .upcoming-locations {
+            padding: 5rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .upcoming-locations h2 {
+            font-size: 2.2rem;
+            color: #997864;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .location-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .location-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .location-card-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: #fff;
+            padding: 3rem 1.5rem 1.5rem;
+        }
+
+        .location-card-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .location-card-info p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .coming-soon-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: #997864;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Stay Connected Section */
+        .stay-connected {
+            background-color: #997864;
+            color: #fff;
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .stay-connected h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .stay-connected p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+
+        .social-icons a {
+            color: #fff;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-3px);
+            opacity: 0.8;
+        }
+
+        .social-icons svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive - Mobile */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+
+            .page-header {
+                padding: 3rem 1.5rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .contact-info {
+                padding: 3rem 1.5rem;
+            }
+
+            .contact-info-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .contact-card {
+                padding: 1.5rem;
+            }
+
+            .contact-card svg {
+                width: 40px;
+                height: 40px;
+                margin-bottom: 1rem;
+            }
+
+            .contact-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .contact-card p {
+                font-size: 1rem;
+            }
+
+            .upcoming-locations {
+                padding: 3rem 1.5rem;
+            }
+
+            .upcoming-locations h2 {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+
+            .locations-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .location-card img {
+                height: 220px;
+            }
+
+            .location-card-info {
+                padding: 2rem 1rem 1rem;
+            }
+
+            .location-card-info h3 {
+                font-size: 1.1rem;
+            }
+
+            .location-card-info p {
+                font-size: 0.9rem;
+            }
+
+            .coming-soon-badge {
+                font-size: 0.7rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .stay-connected {
+                padding: 3rem 1.5rem;
+            }
+
+            .stay-connected h2 {
+                font-size: 1.8rem;
+            }
+
+            .stay-connected p {
+                font-size: 1rem;
+            }
+
+            .social-icons {
+                gap: 2rem;
+            }
+
+            .social-icons svg {
+                width: 35px;
+                height: 35px;
+            }
+
+            footer {
+                padding: 1.5rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Responsive - Small Mobile */
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 0.75rem 1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .contact-info {
+                padding: 2rem 1rem;
+            }
+
+            .upcoming-locations {
+                padding: 2rem 1rem;
+            }
+
+            .upcoming-locations h2,
+            .stay-connected h2 {
+                font-size: 1.5rem;
+            }
+
+            .location-card img {
+                height: 180px;
+            }
+
+            .stay-connected {
+                padding: 2.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">Kevin's Kones</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="our-story.html">Our Story</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="contact.html" class="active">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <h1>Contact Us</h1>
+    </section>
+
+    <!-- Contact Info -->
+    <section class="contact-info">
+        <div class="contact-info-content">
+            <div class="contact-card">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                </svg>
+                <h3>Location</h3>
+                <p>1234 Arrow Ave<br>Winter Park, FL 32789</p>
+            </div>
+            <div class="contact-card">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                <h3>Hours</h3>
+                <p>Open Daily<br>12:00 PM - 8:00 PM</p>
+            </div>
+            <div class="contact-card">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                <h3>Phone</h3>
+                <p>(407) 555-2891</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Locations -->
+    <section class="upcoming-locations">
+        <h2>Coming Soon Near You</h2>
+        <div class="locations-grid">
+            <div class="location-card">
+                <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&h=400&fit=crop" alt="Orlando Location">
+                <span class="coming-soon-badge">Coming Soon</span>
+                <div class="location-card-info">
+                    <h3>Downtown Orlando Location</h3>
+                    <p>Opening Summer 2025</p>
+                </div>
+            </div>
+            <div class="location-card">
+                <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&h=400&fit=crop" alt="Lake Mary Location">
+                <span class="coming-soon-badge">Coming Soon</span>
+                <div class="location-card-info">
+                    <h3>Lake Mary Location</h3>
+                    <p>Opening Fall 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stay Connected -->
+    <section class="stay-connected">
+        <h2>Stay Connected</h2>
+        <p>Follow us for the latest flavors, special offers, and behind-the-scenes fun!</p>
+        <div class="social-icons">
+            <!-- Instagram -->
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                    <circle cx="12" cy="12" r="4"/>
+                    <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+                </svg>
+            </a>
+            <!-- TikTok -->
+            <a href="https://tiktok.com" target="_blank" aria-label="TikTok">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+                </svg>
+            </a>
+            <!-- Facebook -->
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Kevin's Kones. All rights reserved.</p>
+    </footer>
+</body>
+</html>

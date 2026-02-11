@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story | Kevin's Kones</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F2E9E4;
+            color: #000;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #fff;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #997864;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #997864;
+        }
+
+        .nav-links a.active {
+            color: #997864;
+            border-bottom: 2px solid #997864;
+            padding-bottom: 0.25rem;
+        }
+
+        /* Page Header */
+        .page-header {
+            background-color: #997D84;
+            color: #fff;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-header .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        .page-header .shape-1 {
+            width: 120px;
+            height: 120px;
+            background-color: #fff;
+            top: -30px;
+            left: 10%;
+        }
+
+        .page-header .shape-2 {
+            width: 80px;
+            height: 80px;
+            border: 3px solid #fff;
+            background: transparent;
+            top: 20px;
+            right: 15%;
+        }
+
+        .page-header .shape-3 {
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            bottom: -15px;
+            left: 25%;
+        }
+
+        .page-header .shape-4 {
+            width: 150px;
+            height: 150px;
+            border: 3px solid #fff;
+            background: transparent;
+            bottom: -60px;
+            right: 8%;
+        }
+
+        .page-header .shape-5 {
+            width: 30px;
+            height: 30px;
+            background-color: #fff;
+            top: 15px;
+            left: 5%;
+        }
+
+        .page-header .shape-6 {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #fff;
+            background: transparent;
+            bottom: 20px;
+            right: 25%;
+        }
+
+        /* Our Story Section */
+        .story-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .story-section h2 {
+            font-size: 2.2rem;
+            color: #997864;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-section p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .story-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .story-image {
+            position: relative;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            filter: grayscale(100%);
+            border-radius: 8px;
+        }
+
+        .story-image .image-caption {
+            position: absolute;
+            bottom: 12px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #fff;
+            font-size: 0.9rem;
+            font-style: italic;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        /* About Summary Section */
+        .about-summary {
+            background-color: #fff;
+            padding: 5rem 2rem;
+        }
+
+        .about-summary-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-summary h2 {
+            font-size: 2.2rem;
+            color: #997864;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-summary p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #333;
+        }
+
+        /* Stay Connected Section */
+        .stay-connected {
+            background-color: #997864;
+            color: #fff;
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .stay-connected h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .stay-connected p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+
+        .social-icons a {
+            color: #fff;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-3px);
+            opacity: 0.8;
+        }
+
+        .social-icons svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive - Mobile */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+
+            .page-header {
+                padding: 3rem 1.5rem;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .story-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .story-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .story-section p {
+                font-size: 1rem;
+            }
+
+            .story-images {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .story-image img {
+                height: 250px;
+            }
+
+            .about-summary {
+                padding: 3rem 1.5rem;
+            }
+
+            .about-summary h2 {
+                font-size: 1.8rem;
+            }
+
+            .about-summary p {
+                font-size: 1rem;
+            }
+
+            .stay-connected {
+                padding: 3rem 1.5rem;
+            }
+
+            .stay-connected h2 {
+                font-size: 1.8rem;
+            }
+
+            .stay-connected p {
+                font-size: 1rem;
+            }
+
+            .social-icons {
+                gap: 2rem;
+            }
+
+            .social-icons svg {
+                width: 35px;
+                height: 35px;
+            }
+
+            footer {
+                padding: 1.5rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Responsive - Small Mobile */
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 0.75rem 1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .story-section h2,
+            .about-summary h2,
+            .stay-connected h2 {
+                font-size: 1.5rem;
+            }
+
+            .story-image img {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">Kevin's Kones</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="our-story.html" class="active">Our Story</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+        <div class="shape shape-6"></div>
+        <h1>Our Story</h1>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section">
+        <h2>A Family Dream Come True</h2>
+        <p>Kevin's Kones started as a dream shared around our family dinner table. In 2018, after years of talking about opening our own ice cream shop, we finally took the leap. Those first few months were anything but easy. We poured every penny we had into this little shop on Arrow Ave, working long hours, learning hard lessons, and wondering more than once if we'd made the right choice. There were nights we stayed up late perfecting recipes and mornings we opened the doors not knowing if anyone would walk in.</p>
+        <p>But slowly, things changed. Word spread about our homemade flavors and the welcoming atmosphere we worked so hard to create. Neighbors became regulars, and regulars became friends. Now, years later, we can honestly say we have no regrets. Watching families create memories over scoops of ice cream, seeing kids light up when they try our Superhero flavor for the first time, and being a part of this wonderful Winter Park community has made every challenge worth it. This shop isn't just our business; it's our heart.</p>
+
+        <div class="story-images">
+            <div class="story-image">
+                <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&h=400&fit=crop" alt="The Kevin's Kones Family">
+            </div>
+            <div class="story-image">
+                <img src="https://images.unsplash.com/photo-1518005068251-37900150dfca?w=600&h=400&fit=crop" alt="Vintage Building">
+                <span class="image-caption">Winter Park, 1987</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Summary -->
+    <section class="about-summary">
+        <div class="about-summary-content">
+            <h2>What We're All About</h2>
+            <p>Kevin's Kones is a family-owned ice cream shop in Winter Park, Florida, serving up happiness one scoop at a time. From creamy soft-serve and hand-scooped classics to refreshing slushies, thick milkshakes, and old-fashioned floats, we have something for everyone. We believe ice cream is more than just a treat; it's a reason to slow down, gather with the people you love, and savor the sweet moments in life.</p>
+        </div>
+    </section>
+
+    <!-- Stay Connected -->
+    <section class="stay-connected">
+        <h2>Stay Connected</h2>
+        <p>Follow us for the latest flavors, special offers, and behind-the-scenes fun!</p>
+        <div class="social-icons">
+            <!-- Instagram -->
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                    <circle cx="12" cy="12" r="4"/>
+                    <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+                </svg>
+            </a>
+            <!-- TikTok -->
+            <a href="https://tiktok.com" target="_blank" aria-label="TikTok">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+                </svg>
+            </a>
+            <!-- Facebook -->
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Kevin's Kones. All rights reserved.</p>
+    </footer>
+</body>
+</html>
